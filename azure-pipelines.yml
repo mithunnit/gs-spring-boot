@@ -46,7 +46,6 @@ stages:
     jobs:
     - job: DeployLinuxWebApp
       displayName: Deploy Linux Web App
-      environment: development
       pool: $(vmImageName)
 
       steps:
