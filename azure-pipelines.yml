@@ -40,7 +40,7 @@ stages:
           ArtifactName: 'drop'
   
   - stage: Deploy
-    displayName: Deploy stage
+    displayName: Development
     dependsOn: Build
     condition: succeeded()
     jobs:
