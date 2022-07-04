@@ -7,7 +7,7 @@ variables:
   azureSubscription: '0da7ae55-f78b-410c-90fb-cef156b34a60'
   
   # Web app name
-  webAppName: 'java-spring-boot'
+  webAppName: 'java-spring-boot1'
 
   # Agent VM image name
   vmImageName: 'Azure Pipelines'
