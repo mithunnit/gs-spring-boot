@@ -60,5 +60,5 @@ stages:
           azureSubscription: 'Pay-As-You-Go(0da7ae55-f78b-410c-90fb-cef156b34a60)'
           appType:  webAppLinux
           appName: '$(webAppName)'
-          package: '$(System.DefaultWorkingDirectory)/drop/**/target/*.?(war|jar)'
+          package: '$(System.DefaultWorkingDirectory)/drop/app/target/*.jar'
 
