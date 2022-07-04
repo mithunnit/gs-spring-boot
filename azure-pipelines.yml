@@ -39,7 +39,7 @@ stages:
           PathtoPublish: '$(Build.ArtifactStagingDirectory)'
           ArtifactName: 'drop'
   
-  - stage: Deploy
+  - stage: Deploy1
     displayName: Development
     dependsOn: Build
     condition: succeeded()
@@ -61,4 +61,27 @@ stages:
           appType:  webAppLinux
           appName: '$(webAppName)'
           package: '/home/vsts/work/1/drop/app/target/*.jar'
+
+  - stage: Deploy2
+    displayName: QA
+    dependsOn: Deploy1
+    condition: succeeded()
+    jobs:
+    - job: DeployLinuxWebApp
+      displayName: Deploy Linux Web App
+      pool: $(vmImageName)
+
+      steps:
+      - task: DownloadPipelineArtifact@2
+        displayName: 'Download Pipeline Artifact'
+        inputs:
+          buildType: 'current'
+          
+      - task: AzureWebApp@1
+        displayName: 'Azure Web App Deploy: gs-spring-boot'
+        inputs:
+          azureSubscription: 'Pay-As-You-Go(0da7ae55-f78b-410c-90fb-cef156b34a60)'
+          appType:  webAppLinux
+          appName: 'java-spring-boot2'
+          package: '/home/vsts/work/1/drop/app/target/*.jar'        
 
